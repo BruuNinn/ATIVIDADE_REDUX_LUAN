@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, { useContext } from 'react';
+import { ThemeContext } from './ThemeContext';
+import FormularioLivro from './componentes/FormularioLivro';
+import ListaLivros from './componentes/ListaLivros';
 import './App.css';
 
 function App() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={theme === 'light' ? 'light-theme' : 'dark-theme'}>
+      <div className="container">
+        <h1>Gerenciador de Livros</h1>
+        <button onClick={toggleTheme}>Alternar Tema</button>
+        <FormularioLivro />
+        <ListaLivros />
+      </div>
     </div>
   );
+
+
+  
 }
 
+
+
+
+
 export default App;
+
